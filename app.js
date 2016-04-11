@@ -44,6 +44,7 @@ $(document).ready(function() {
         // Add the valueline path.
         svg.append("path")
             .attr("class", "line")
+            .attr("class", "path_sen")
             .attr("d", valueline(data));
 
         // Add the scatterplot
@@ -67,6 +68,22 @@ $(document).ready(function() {
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+    });
+
+    d3.json("data/jfk_features.json", function(error, data) {
+        x.domain(d3.extent(data, function(d) { return d.time; }));
+        y.domain(d3.extent(data, function(d) { return d.frequency; }));
+        svg.append("path")
+            .attr("class", "line")
+            .attr("class", "path_freq")
+            .attr("d", valueline(data));
+
+        svg.selectAll("dot")
+            .data(data)
+            .enter().append("circle")
+            .attr("r", 0)
+            .attr("cx", function(d) { return x(d.time); })
+            .attr("cy", function(d) { return y(d.frequency); });
     });
 
 

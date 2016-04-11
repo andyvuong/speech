@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6, p, li, span {
     font-family: 'Ropa Sans', sans-serif;
 }
 
+body {
+    background: #e6e6e6;
+}
+
 #chart {
     width: 100%;
 }
@@ -49,8 +53,20 @@ h1 {
     height: 100vh;
 }
 
-path { 
-    stroke: steelblue;
+.path_sen { 
+    stroke: #355C7D;
+    stroke-width: 2;
+    fill: none;
+}
+
+.path_amp { 
+    stroke: #D55C2B;
+    stroke-width: 2;
+    fill: none;
+}
+
+.path_fre { 
+    stroke: #79A687;
     stroke-width: 2;
     fill: none;
 }
