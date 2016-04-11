@@ -11,22 +11,36 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="main-wrapper">  
-            <div class="section">
+        <div class="container">
+            <div class="row">
                 <div class="title">
                     <h1>Speech Analyzer</h1>
                 </div>
+            </div>
+            <div class="row">
                 <div id="text-area">
-                    <p>kj</p>
+                    <p id="speechbox">Welcome. Hover over a dot on the blue line to see the speech lines.</p>
                 </div>
             </div>
-            <div class="section">
+            <div id="chart-row" class="row">
                 <div id="chart">
                 </div>
             </div>
-            <div class="section">
-                <div>
-
+            <hr>
+            <div id="about-section" class="row">
+                <div class="col-md-5">
+                    <h3>About</h3>
+                    <p>This visualization attempts to explore the relationship between the sentiment, volume and pitch of famous speeches. By exploring different speakers, we hope to discover the characteristics of great speeches, patterns in the way speakers talk, and the differences in the way speakers present their speeches.</p>
+                    <p>
+                        <strong>Created @ UIUC:</strong> Jing Huang, Shawn Kollesar, Kanishk Thareja, Andy Vuong, Ji Yang
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <h3>Info</h3>
+                    <h4>Speaker: <span id="info-by"></span></h4>
+                    <h4>Title: <span id="info-title"></span></h4>
+                    <p>Hover over a blue line dot to see the sentiment of the speech at that point.</p>
+                    
                 </div>
             </div>
         </div>

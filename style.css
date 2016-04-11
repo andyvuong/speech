@@ -1,15 +1,5 @@
-h1, h2 ,h3 ,h4 ,h5 ,h6 ,p ,li {
+h1, h2, h3, h4, h5, h6, p, li, span {
     font-family: 'Ropa Sans', sans-serif;
-}
-
-.main-wrapper {
-    min-height: 100vh;
-    background: #BCBCBC;
-    position: relative;
-}
-
-.section {
-    position: relative;
 }
 
 #chart {
@@ -39,6 +29,24 @@ h1 {
     margin-bottom: 2%;
     text-align: center;
     font-size: 1.5em;
+    min-height: 20%;
+}
+
+#speechbox {
+    font-size: 0.75em;
+}
+
+#about-section p {
+    font-size: 1.2em;
+}
+
+#about-section h3 {
+    margin-top: 0;
+}
+
+.container {
+    padding: 0 !important;
+    height: 100vh;
 }
 
 path { 

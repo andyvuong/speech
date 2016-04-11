@@ -5,7 +5,8 @@ $(document).ready(function() {
     height = 500 - margin.top - margin.bottom;
 
     var parseDate = d3.time.format("%d-%b-%y").parse;
-    var x = d3.time.scale().range([0, width]);
+    //var x = d3.time.scale().range([0, width]);
+    var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 
     var xAxis = d3.svg.axis().scale(x)
@@ -16,8 +17,8 @@ $(document).ready(function() {
 
     // Define the line
     var valueline = d3.svg.line()
-        .x(function(d) { return x(d.date); })
-        .y(function(d) { return y(d.close); });
+        .x(function(d) { return x(d.startTime); })
+        .y(function(d) { return y(d.sentiment); });
 
     var svg = d3.select("#chart").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -25,17 +26,20 @@ $(document).ready(function() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    $("#chart-row").css("height", height + margin.top + margin.bottom);
 
     // Add the visualization
-    d3.csv("data/data.csv", function(error, data) {
+    //  Inaugural Address
+    d3.json("data/jfk_speech.json", function(error, data) {
         data.forEach(function(d) {
-            d.date = parseDate(d.date);
-            d.close = +d.close;
+            d.startTime = +d.startTime;
+            d.sentiment = d.sentiment;
         });
 
         // Scale the range of the data
-        x.domain(d3.extent(data, function(d) { return d.date; }));
-        y.domain([0, d3.max(data, function(d) { return d.close; })]);
+        x.domain(d3.extent(data, function(d) { return d.startTime; }));
+        y.domain(d3.extent(data, function(d) { return d.sentiment; }));
+        //y.domain([0, d3.max(data, function(d) { return d.sentiment; })]);
 
         // Add the valueline path.
         svg.append("path")
@@ -47,8 +51,11 @@ $(document).ready(function() {
             .data(data)
             .enter().append("circle")
             .attr("r", 3.5)
-            .attr("cx", function(d) { return x(d.date); })
-            .attr("cy", function(d) { return y(d.close); });
+            .attr("cx", function(d) { return x(d.startTime); })
+            .attr("cy", function(d) { return y(d.sentiment); })
+            .on('mouseover', function(d) {
+                $("#speechbox").text(d.text);
+            });
 
         // Add the X Axis
         svg.append("g")
@@ -60,29 +67,8 @@ $(document).ready(function() {
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
-
     });
 
-    d3.csv("data/data2.csv", function(error, data) {
-        data.forEach(function(d) {
-            d.date = parseDate(d.date);
-            d.close = +d.close;
-        });
 
-        // Scale the range of the datas
-
-        // Add the valueline path.
-        svg.append("path")
-            .attr("class", "line")
-            .attr("d", valueline(data));
-
-        // Add the scatterplot
-        svg.selectAll("dot")
-            .data(data)
-            .enter().append("circle")
-            .attr("r", 3.5)
-            .attr("cx", function(d) { return x(d.date); })
-            .attr("cy", function(d) { return y(d.close); });
-    });
         //.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 });
