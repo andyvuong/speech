@@ -42,6 +42,18 @@
                             <button id="click-fre" type="button" class="btn btn-default">Frequency</button>
                             <button id="click-amp" type="button" class="btn btn-default">Amplitude</button>
                         </div>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Choose Speaker
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="speaker-list" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">JFK 1</a></li>
+                                <li><a href="#">JFK 2</a></li>
+                                <li><a href="#">Reagan</a></li>
+                                <li><a href="#">FDR</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="row">
                     <br>
@@ -49,7 +61,8 @@
                         <h4>Speaker: <span id="info-by"></span></h4>
                         <h4>Title: <span id="info-title"></span></h4>
                     </div>
-                    <p>Hover over a blue line dot to see the sentiment of the speech at that point. Switch between views below:</p>
+
+                    <p>Hover over a blue line dot to see the sentiment of the speech at that point. Switch between views with the buttons above.</p>
                 </div>
             </div>
         </div>
