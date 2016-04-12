@@ -23,9 +23,9 @@ $(document).ready(function() {
 
     var features = [
         'jfk_features.json',
-        '',
-        '',
-        ''
+        'jfkberliner_features.json',
+        'fdrpearlharbor_features.json',
+        'reganchallenger_features.json'
     ];
 
     var currentSpeechFile = speeches[0];
