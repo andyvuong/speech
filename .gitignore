@@ -3,6 +3,7 @@ data.csv
 data2.csv
 amp_freq.json
 jfk_features.json
+jfk_features_old.json
 jfk_features_test.json
 data/jfk_features_test.json
 data/jfk_features.json

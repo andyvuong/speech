@@ -40,6 +40,10 @@ h1 {
     font-size: 0.75em;
 }
 
+#about-section {
+    margin-top: 1%;
+}
+
 #about-section p {
     font-size: 1.2em;
 }
@@ -71,10 +75,33 @@ h1 {
     fill: none;
 }
 
+.sen-label {
+    font-size: 1.1em;
+    font-family: 'Ropa Sans', sans-serif;
+    stroke: #355C7D;
+}
+
+.fre-label {
+    font-size: 1.1em;
+    font-family: 'Ropa Sans', sans-serif;
+    stroke: #79A687;
+}
+
+.amp-label {
+    font-size: 1.1em;
+    font-family: 'Ropa Sans', sans-serif;
+    stroke: #D55C2B;
+}
+
 .axis path,
 .axis line {
     fill: none;
     stroke: grey;
     stroke-width: 1;
     shape-rendering: crispEdges;
+}
+
+.label {
+    font-size: 1.1em;
+    font-family: 'Ropa Sans', sans-serif;
 }
