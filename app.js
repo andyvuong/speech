@@ -1,17 +1,24 @@
 $(document).ready(function() {
 
 
-    var speakers = {
-        jfk: 'John F. Kennedy',
-        reagan: 'Ronald Reagan',
-        fdr: 'Franklin D. Roosevelt'
-    }
+    var speakers = [
+        'John F. Kennedy',
+        'Ronald Reagan',
+        'Franklin D. Roosevelt'
+    ];
 
     var speeches = [
         'jfk_speech.json',
         'jfkberliner_speech.json',
         'fdrpearlharbor_speech.json',
         'reganchallenger_speech.json'
+    ];
+
+    var speechTitles = [
+        'Inaugural Address',
+        'Ich bin ein Berliner',
+        'Pearl Harbor Address',
+        'Shuttle Challenger Disaster Address'
     ];
 
     var features = [
@@ -104,27 +111,42 @@ $(document).ready(function() {
             currentSpeechFile = speeches[0];
             currentFeatureFile = features[0];
             init(currentSpeechFile);
+
+            setSpeaker(speakers[0]);
+            setTitle(speechTitles[0]);
         }
         else if (choice === 'JFK 2') {
             currentSpeechFile = speeches[1];
             currentFeatureFile = features[1];
             console.log(currentSpeechFile);
             init(currentSpeechFile);
+
+            setSpeaker(speakers[0]);
+            setTitle(speechTitles[1]);
         }
         else if (choice === 'FDR') {
             currentSpeechFile = speeches[2];
             currentFeatureFile = features[2];
             init(currentSpeechFile);
+
+            setSpeaker(speakers[2]);
+            setTitle(speechTitles[2]);
         }
         else if (choice === 'Reagan') {
             currentSpeechFile = speeches[3];
             currentFeatureFile = features[3];
             init(currentSpeechFile);
+
+            setSpeaker(speakers[1]);
+            setTitle(speechTitles[3]);
         }
         else {
             console.log("Error occured");
         }
     });
+
+    setSpeaker(speakers[0]);
+    setTitle(speechTitles[0]);
 
     // start
     init(currentSpeechFile);
