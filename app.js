@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    /**
+     * Set up the chart layout
+     */
     var margin = {top: 30, right: 50, bottom: 30, left: 75},
     width = 1200 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -32,77 +35,46 @@ $(document).ready(function() {
 
     $("#chart-row").css("height", height + margin.top + margin.bottom);
 
-    // Add the visualization
-    //  Inaugural Address
-    /*
-    d3.json("data/jfk_speech.json", function(error, data) {
-        data.forEach(function(d) {
-            d.startTime = +d.startTime;
-            d.sentiment = d.sentiment;
-        });
+    function addLayer() {
+        svg = d3.select("#chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + 3*margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    }
 
-        // Scale the range of the data
-        x.domain(d3.extent(data, function(d) { return d.startTime; }));
-        y.domain(d3.extent(data, function(d) { return d.sentiment; }));
-        //y.domain([0, d3.max(data, function(d) { return d.sentiment; })]);
+    function init() {
+        showSentiment();
+    }
 
-        // Add the valueline path.
-        svg.append("path")
-            .attr("class", "line")
-            .attr("class", "path_sen")
-            .attr("d", valueline(data));
+    /**
+     * Click handlers
+     */
 
-        // Add the scatterplot
-        svg.selectAll("dot")
-            .data(data)
-            .enter().append("circle")
-            .attr("r", 3.5)
-            .attr("cx", function(d) { return x(d.startTime); })
-            .attr("cy", function(d) { return y(d.sentiment); })
-            .on('mouseover', function(d) {
-                $("#speechbox").text(d.text);
-            });
-
-        // Add the x Axis
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
-
-        // label x
-        svg.append("text")      // text label for the x axis
-            .attr("x", (width)/2 )
-            .attr("y", height + margin.bottom + 20)
-            .style("text-anchor", "middle")
-            .attr("class", "label")
-            .text("Time (seconds)");
-
-        // Add the y Axis
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis);
-
-
-        var addLabel = function(text, style, variant) {
-            svg.append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", 0 - margin.left)
-                .attr("x",0 - (height / 2) + variant)
-                .attr("dy", "1em")
-                .attr("class", style)
-                .text(text);
-        }
-
-        addLabel("Sentiment", "sen-label", 80);
-        addLabel("Amplitude", "amp-label", -20);
-        addLabel("Frequency", "fre-label", -120);
-        // label y
+    $('#click-sen').on('click', function() {
+        d3.selectAll("#chart > *").remove();
+        addLayer();
+        showSentiment();
     });
-*/
+
+    $('#click-fre').on('click', function() {
+        d3.selectAll("#chart > *").remove();
+        addLayer();
+        showFrequency();
+    });
+
+    $('#click-amp').on('click', function() {
+        d3.selectAll("#chart > *").remove();
+        addLayer();
+        showAmplitude();
+    });
+
+    // start
+    init();
 
     //showFrequency();
     //showSentiment();
-    showAmplitude();
+    //showAmplitude();
 
     var addLabel = function(text, style, variant) {
         svg.append("text")
